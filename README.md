@@ -23,7 +23,7 @@ An AI-powered application that automatically processes and analyzes financial do
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/AtharvaKsh25/Cognizant_Hackathon.git
+   git clone https://github.com/ShaileshBothe/Loan-Documents-Processing-using-GEN-AI.git
    cd Cognizant_Hackathon
    ```
 
