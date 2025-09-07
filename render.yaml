@@ -1,0 +1,28 @@
+# Render.com deployment configuration
+# This file tells Render how to build and run your application
+
+# Backend service configuration
+services:
+  - type: web
+    name: loan-processor-backend
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: GOOGLE_API_KEY
+        sync: false
+      - key: PORT
+        value: 10000
+    healthCheckPath: /docs
+
+  - type: web
+    name: loan-processor-frontend
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run app.py --server.port $PORT --server.address 0.0.0.0
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: BACKEND_URL
+        value: https://loan-processor-backend.onrender.com
+    healthCheckPath: /

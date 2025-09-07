@@ -1,0 +1,24 @@
+# Fly.io configuration
+app = "loan-processor-app"
+primary_region = "iad"
+
+[build]
+
+[env]
+  GOOGLE_API_KEY = "AIzaSyAVn57TVA8gAmdtVXpt20uqIDoVjEIzd-8"
+
+[http_service]
+  internal_port = 8000
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]
+
+[[vm]]
+  cpu_kind = "shared"
+  cpus = 1
+  memory_mb = 256
+
+[processes]
+  app = "uvicorn main:app --host 0.0.0.0 --port 8000"
