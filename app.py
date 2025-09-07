@@ -145,7 +145,7 @@ if page == "Loan Application Processor":
             with st.spinner('AI is analyzing the application... This may take some time.'):
                 multipart_files = [('files', (file.name, file.getvalue(), file.type)) for file in uploaded_files]
                 try:
-                    response = requests.post("http://127.0.0.1:8000/process-application/", files=multipart_files)
+                    response = requests.post("https://loan-documents-processing-using-gen-ai-2igp.onrender.com", files=multipart_files)
                     if response.status_code == 200:
                         st.success('✅ Application processed successfully!')
                         st.session_state.application_results = response.json()
